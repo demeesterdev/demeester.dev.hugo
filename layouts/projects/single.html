@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+  <h1 class="title"><a href="{{.Permalink}}">{{ .Title}}</a></h1>
+  
+  {{ if .Params.srcURL }}
+    {{ $srcUrl := .Params.srcUrl}}
+    {{ $srcSpec := strings.TrimPrefix "http://" (strings.TrimPrefix "https://" .Params.srcUrl)}}
+    <h6 class="subtitle src-link">source: <a href="{{$srcUrl}}" target="_blank" rel="noopener noreferrer">{{$srcSpec}}</a></h6>
+  {{ end }}
+  {{ if .Params.siteURL }}
+    {{ $siteUrl := .Params.siteUrl}}
+    {{ $siteSpec := strings.TrimPrefix "http://" (strings.TrimPrefix "https://" .Params.siteUrl)}}
+    <h6 class="subtitle site-link">site: <a href="{{$siteUrl}}" target="_blank" rel="noopener noreferrer">{{$siteSpec}}</a></h6>
+  {{ end }}
+  {{ .Content}}  
+
+  {{ $projectPosts := where .Site.RegularPages "Params.projects" "intersect" (slice .Params.project)}}   
+  {{ if $projectPosts}}
+  <h3 id="project-posts">Project Posts:</h3>
+  <ul>
+    {{ range $projectPosts }}
+    <li><a href="{{.Permalink}}">{{.Title}}</a></li>
+    {{ end }}
+  </ul>
+  {{end}}
+
+{{ end }}

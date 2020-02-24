@@ -1,0 +1,9 @@
+{{ define "main" }}
+  {{ .Content}}
+  
+  {{ range where .Site.RegularPages "Type" "posts"}}
+    <h1 class="title"><a href="{{.Permalink}}">{{ .Title}}</a></h1>
+    <h6 class="subtitle timestamp">{{.Date.Format "2006-01-02"}}</h6>
+    <div class="summary">{{ .Summary }}</div>
+  {{ end }}
+{{ end }}

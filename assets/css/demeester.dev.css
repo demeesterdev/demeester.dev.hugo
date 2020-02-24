@@ -1,0 +1,98 @@
+html,body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0; 
+}
+
+/*
+* navbar settings
+*/
+.navbar {
+    box-shadow: 0 0px 10px rgba(128, 128, 128, 0.25);
+}
+
+.navbar-item {
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-size: 17px; 
+    font-weight: 700; 
+    font-style: normal;  
+    text-transform: none;  
+    letter-spacing: 0px; 
+    word-spacing: 0px; 
+    font-variant: normal;
+    line-height: 23px;
+}
+
+.navbar-title>a { 
+    font-size: 23px; 
+    color: inherit;
+}
+
+.navbar-social>a {
+    margin: 0px 10px;
+    color:inherit;
+}
+
+.section-active {
+    text-decoration: underline !important;
+}
+
+/*
+* content settings
+*/
+
+#main-padding {
+    margin: 0 1.5em;
+}
+
+#main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+h1 {
+    font-family: monospace
+}
+
+.timestamp {
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    color: #b5b5b5 !important;
+}
+
+.footnotes {
+    font-size: 0.8rem;
+}
+
+/*
+* footer settings
+*/
+
+.disclaimer a, .disclaimer strong {
+    color:#4a4a4a;
+}
+.disclaimer,.disclaimer strong {
+    text-align: center;
+    color:#7a7a7a;
+}
+
+/*
+* project list
+*/
+
+:not(is-spaced).subtitle + .subtitle {
+    margin-top: -1.25rem;
+}

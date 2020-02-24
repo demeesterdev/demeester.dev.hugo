@@ -1,0 +1,36 @@
+<footer class="footer">
+    <div class="disclaimer">
+        <p>
+            <strong>{{ $.Site.Title }}</strong> by <a href="{{ $.Site.BaseURL }}">{{$.Site.Params.author}}</a>.
+        </p>
+        <p>
+            Code and snippets are <a href="http://opensource.org/licenses/mit-license.php"
+                target="_blank" rel="noopener noreferrer">MIT</a>
+            other content licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"
+                rel="noopener noreferrer">CC BY NC SA 4.0</a>.
+        </p>
+        {{if .GitInfo}}
+        <p>
+            {{if .Site.Params.githubSourceURL}}
+                <a href="http://" ></a>
+                <a href="{{.Site.Params.githubSourceURL}}/blob/{{.GitInfo.Hash}}/content/{{ replace .File.Path "\\" "/"}}"
+                   target="_blank" 
+                   rel="noopener noreferrer">
+            {{end}}
+                    modified {{ .Lastmod.Format "2006-01-02 15:04" }}
+                    by {{.GitInfo.AuthorName}} 
+                    [{{.GitInfo.Subject}}](#{{.GitInfo.AbbreviatedHash}})
+
+            {{if .Site.Params.githubSourceURL}}
+                </a>
+            {{end}}
+                
+        </p>
+        {{end}}
+    </div>
+</footer>
+
+{{ $jsDemeesterDev   := resources.Get "js/demeester.dev.js" }}
+{{ $scriptDemeesterDev := $jsDemeesterDev | resources.Minify | resources.Fingerprint "sha512"}}
+<script src="{{ $scriptDemeesterDev.Permalink }}"
+        integrity="{{ $scriptDemeesterDev.Data.Integrity }}"></script>

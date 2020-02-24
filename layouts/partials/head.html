@@ -1,0 +1,13 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>{{$.Site.Title}}{{ if not .IsHome }} - {{.Title}}{{end}}</title>
+{{ $cssBulma   := resources.Get "css/bulma.0.7.4.css" }}
+{{ $cssDemeesterDev   := resources.Get "css/demeester.dev.css" }}
+{{ $cssDemeesterDevIcons   := resources.Get "css/demeester.dev.icons.css" }}
+{{ $cssDemeesterDevBudle := slice $cssBulma $cssDemeesterDev $cssDemeesterDevIcons | resources.Concat "cd/demeester.dev.bundle.css"}}
+{{ $styleDemeesterDevBundle := $cssDemeesterDevBudle | resources.Minify | resources.Fingerprint "sha512"}}
+<link rel="stylesheet" 
+        href="{{ $styleDemeesterDevBundle.Permalink }}"
+        integrity="{{ $styleDemeesterDevBundle.Data.Integrity }}"
+    >

@@ -1,0 +1,53 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <div class="navbar-item navbar-title">
+            <a href="{{ $.Site.BaseURL }}">
+                <b>&bsol;&gt; {{ $.Site.Title }}</b>
+            </a>
+        </div>
+        <a class="navbar-burger" aria-label="menu" data-target="navMenuHead" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu" id="navMenuHead">
+        <div class="navbar-start">
+            {{ $currentPage := .}}
+            {{ range .Site.Menus.main }}
+            <div class="navbar-item">
+                <a class="section-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} section-active{{end}}"
+                   href="{{.URL}}">{{ .Name }}</a>
+            </div>
+            {{ end }}
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item navbar-social">{{if $.Site.Params.github}}
+                <a href="https://github.com/{{$.Site.Params.github}}" 
+                   aria-label="go to my github profile" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    <i class="icon-github-circled"></i>
+                </a>{{end}}{{if $.Site.Params.twitter}}
+                <a href="https://twitter.com/{{$.Site.Params.twitter}}" 
+                   aria-label="go to my twitter feed" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    <i class="icon-twitter"></i>
+                </a>{{end}}{{if $.Site.Params.linkedin}}
+                <a href="https://www.linkedin.com/in/{{$.Site.Params.linkedin}}/" 
+                   aria-label="got to my linkedin profile" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    <i class="icon-linkedin"></i>
+                </a>{{end}}{{if $.Site.Params.keybase}}
+                <a href="https://keybase.io/{{$.Site.Params.keybase}}/" 
+                   aria-label="got to my keybase profile" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    <i class="icon-keybase"></i>
+                </a>{{end}}
+            </div>
+        </div>
+    </div>
+</nav>
