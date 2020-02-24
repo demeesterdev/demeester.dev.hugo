@@ -22,26 +22,26 @@
             {{ end }}
         </div>
         <div class="navbar-end">
-            <div class="navbar-item navbar-social">{{if $.Site.Params.github}}
-                <a href="https://github.com/{{$.Site.Params.github}}" 
+            <div class="navbar-item navbar-social">{{with $.Site.Params.github}}
+                <a href="https://github.com/{{ . }}" 
                    aria-label="go to my github profile" 
                    target="_blank" 
                    rel="noopener noreferrer">
                     <i class="icon-github-circled"></i>
-                </a>{{end}}{{if $.Site.Params.twitter}}
-                <a href="https://twitter.com/{{$.Site.Params.twitter}}" 
+                </a>{{end}}{{with $.Site.Params.twitter}}
+                <a href="https://twitter.com/{{ . }}" 
                    aria-label="go to my twitter feed" 
                    target="_blank" 
                    rel="noopener noreferrer">
                     <i class="icon-twitter"></i>
-                </a>{{end}}{{if $.Site.Params.linkedin}}
-                <a href="https://www.linkedin.com/in/{{$.Site.Params.linkedin}}/" 
+                </a>{{end}}{{with $.Site.Params.linkedin}}
+                <a href="https://www.linkedin.com/in/{{ . }}/" 
                    aria-label="got to my linkedin profile" 
                    target="_blank" 
                    rel="noopener noreferrer">
                     <i class="icon-linkedin"></i>
-                </a>{{end}}{{if $.Site.Params.keybase}}
-                <a href="https://keybase.io/{{$.Site.Params.keybase}}/" 
+                </a>{{end}}{{with $.Site.Params.keybase}}
+                <a href="https://keybase.io/{{ .}}/" 
                    aria-label="got to my keybase profile" 
                    target="_blank" 
                    rel="noopener noreferrer">
