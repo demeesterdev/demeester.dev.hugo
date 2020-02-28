@@ -15,7 +15,8 @@
                 <a href="http://" ></a>
                 <a href="{{.Site.Params.githubSourceURL}}/blob/{{.GitInfo.Hash}}/content/{{ replace .File.Path "\\" "/"}}"
                    target="_blank" 
-                   rel="noopener noreferrer">
+                   rel="noopener noreferrer"
+                   title="Current page source file">
             {{end}}
                     modified {{ .Lastmod.Format "2006-01-02 15:04" }}
                     by {{.GitInfo.AuthorName}} 
@@ -23,14 +24,8 @@
 
             {{if .Site.Params.githubSourceURL}}
                 </a>
-            {{end}}
-                
+            {{end}} 
         </p>
         {{end}}
     </div>
 </footer>
-
-{{ $jsDemeesterDev   := resources.Get "js/demeester.dev.js" }}
-{{ $scriptDemeesterDev := $jsDemeesterDev | resources.Minify | resources.Fingerprint "sha512"}}
-<script src="{{ $scriptDemeesterDev.Permalink }}"
-        integrity="{{ $scriptDemeesterDev.Data.Integrity }}"></script>

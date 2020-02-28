@@ -12,6 +12,13 @@
         </div> 
     </div>
     {{- partial "footer.html" . -}}
+
+    
+
+    {{ $jsDemeesterDev   := resources.Get "js/demeester.dev.js" }}
+    {{ $scriptDemeesterDev := $jsDemeesterDev | resources.Minify | resources.Fingerprint "sha512"}}
+    <script src="{{ $scriptDemeesterDev.Permalink }}"
+        integrity="{{ $scriptDemeesterDev.Data.Integrity }}"></script>
 </body>
 
 </html>
