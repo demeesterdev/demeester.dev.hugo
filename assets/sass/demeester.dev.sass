@@ -1,2 +1,63 @@
-@charset "utf-8";
-@import "bulma/bulma.sass";
+
+html, body 
+  height: 100%
+
+body
+  display: flex
+  flex-direction: column
+
+.content 
+  flex: 1 0 auto
+
+footer 
+  flex-shrink: 0
+
+#main
+  max-width: $tablet
+  margin: 0 auto
+  padding-top: $size-1
+  padding-bottom: $size-1
+
+//navbar 
+
+.navbar 
+  box-shadow: 0 0px 10px $black;
+  background: hsl(0,0%,10%)
+
+.navbar-item
+  font-weight: $weight-bold
+
+
+//text
+h1,
+.timestamp
+  font-family: $family-code
+
+.navbar-item
+  font-family: $family-code
+  font-size: $size-5
+  font-style: normal
+  text-transform: none
+  letter-spacing: 0px
+  word-spacing: 0px
+  font-variant: normal
+  line-height: $size-4
+
+.navbar-title
+  a
+    font-size: $size-4
+    color: inherit
+
+.navbar-social
+  a
+    margin: 0px 10px
+    color: inherit
+
+.disclaimer 
+  text-align: center
+  color: #4a4a4a
+  strong
+    color: #4a4a4a
+  a 
+    color: #7a7a7a
+

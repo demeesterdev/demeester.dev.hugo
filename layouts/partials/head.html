@@ -4,10 +4,9 @@
 <title>{{$.Site.Title}}{{ if not .IsHome }} - {{.Title}}{{end}}</title>
 
 {{- $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") -}}
-{{ $cssBulma   := resources.Get "sass/demeester.dev.sass" | resources.ExecuteAsTemplate "main.sass" . | resources.ToCSS $options }}
-{{ $cssDemeesterDev   := resources.Get "css/demeester.dev.css" }}
+{{ $cssDemeesterDev   := resources.Get "sass/_all.sass" | resources.ExecuteAsTemplate "main.sass" . | resources.ToCSS $options }}
 {{ $cssDemeesterDevIcons   := resources.Get "css/demeester.dev.icons.css" }}
-{{ $cssDemeesterDevBudle := slice $cssBulma $cssDemeesterDev $cssDemeesterDevIcons | resources.Concat "cd/demeester.dev.bundle.css"}}
+{{ $cssDemeesterDevBudle := slice $cssDemeesterDev $cssDemeesterDevIcons | resources.Concat "cd/demeester.dev.bundle.css"}}
 {{ $styleDemeesterDevBundle := $cssDemeesterDevBudle | resources.Minify | resources.Fingerprint "sha512"}}
 <link rel="stylesheet" 
         href="{{ $styleDemeesterDevBundle.Permalink }}"
