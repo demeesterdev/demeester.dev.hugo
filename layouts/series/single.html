@@ -1,0 +1,26 @@
+{{ define "main" }}
+
+  <h1 class="title"><a href="{{.Permalink}}">{{ .Title}}</a></h1>
+  
+  {{ with .Params.srcURL }}
+    {{ $srcSpec := strings.TrimPrefix "http://" (strings.TrimPrefix "https://" .)}}
+    <h6 class="subtitle src-link">source: <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{$srcSpec}}</a></h6>
+  {{ end }}
+  {{ with .Params.siteURL }}
+    {{ $siteSpec := strings.TrimPrefix "http://" (strings.TrimPrefix "https://" .)}}
+    <h6 class="subtitle site-link">site: <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{$siteSpec}}</a></h6>
+  {{ end }}
+
+  {{ .Content}}  
+
+  {{ $episodes := where (.Site.GetPage "/posts").Pages "Params.series" .Params.series}}   
+  {{ with $episodes}}
+    <h3 id="episodes">Episodes in the series:</h3>
+    <ul>
+      {{ range . }}
+        <li><a href="{{.Permalink}}">{{.Title}}</a></li>
+      {{ end }}
+    </ul>
+  {{end}}
+
+{{ end }}

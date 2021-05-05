@@ -1,0 +1,7 @@
+{{ if not .Params.noPreface}}{{ if .Params.series}}{{with .Site.GetPage (printf "/series/%s.md" .Params.series)}}
+    <blockquote>
+        <p>
+This post is part of a series on {{.RawContent}} series. See <a href="{{.Permalink}}">{{.Title}}</a> for other episodes in the series.
+        </p>
+    </blockquote>
+{{end}}{{end}}{{end}}
